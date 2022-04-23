@@ -6,8 +6,11 @@ import 'package:tally/screens/loading.dart';
 import 'package:tally/screens/scoreboard/scoreboard.dart';
 import 'package:tally/screens/scoreboard/scoreboard_settings.dart';
 import 'package:tally/models/gameArguments.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     initialRoute: '/home',
     routes: {

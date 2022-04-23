@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tally/globals.dart' as globals;
 // ignore_for_file: prefer_const_constructors
 
 class ScoreboardSettings extends StatefulWidget {
@@ -30,10 +29,6 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
                   child: TextButton.icon(
                     onPressed: () {
                       setState(() {
-                        print(globals.team1Score);
-                        globals.team1Score = 0;
-                        globals.team2Score = 0;
-                        print(globals.team1Score);
                       });
                     },
                     label: Text('Reset'),

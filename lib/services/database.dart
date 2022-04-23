@@ -2,16 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
 
-  final String gameId;
-  DatabaseService({ required this.gameId });
-
+  late String gameId;
   // collection reference
-  final CollectionReference scoreCollection = FirebaseFirestore.instance.collection('scores');
+  late CollectionReference gameCollection;
 
-  Future updateData(int score1, int score2) async {
-    return await scoreCollection.doc(gameId).set({
-      'score1': score1,
-      'score2': score2,
+  DatabaseService({required this.gameId}) {
+    gameCollection = FirebaseFirestore.instance.collection('Game: ' + gameId);
+  }
+
+  updateScores(int team1Score, int team2Score) async {
+    await gameCollection.doc('Team 1').set({
+      'score': team1Score,
+    });
+    await gameCollection.doc('Team 2').set({
+      'score': team2Score,
     });
   }
 }

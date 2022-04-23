@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tally/models/gameArguments.dart';
+
+import 'package:tally/services/database.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Home extends StatefulWidget {

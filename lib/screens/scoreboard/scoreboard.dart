@@ -3,11 +3,14 @@ import 'package:tally/globals.dart' as globals;
 // ignore_for_file: prefer_const_constructors
 
 class Scoreboard extends StatefulWidget {
-  const Scoreboard({Key? key}) : super(key: key);
+  final String gameId;
+  const Scoreboard({Key? key, required this.gameId}) : super(key: key);
+
 
   @override
   _ScoreboardState createState() => _ScoreboardState();
 }
+
 
 class _ScoreboardState extends State<Scoreboard> {
   String? swipeDirection;
@@ -21,6 +24,7 @@ class _ScoreboardState extends State<Scoreboard> {
               children: [
             Column(
               children: [
+                Text(widget.gameId),
                 Expanded(
                   child: GestureDetector(
                     onPanUpdate: (details) {

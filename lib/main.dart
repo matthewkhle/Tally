@@ -5,7 +5,7 @@ import 'package:tally/screens/home.dart';
 import 'package:tally/screens/loading.dart';
 import 'package:tally/screens/scoreboard/scoreboard.dart';
 import 'package:tally/screens/scoreboard/scoreboard_settings.dart';
-import 'package:tally/models/gameArguments.dart';
+import 'package:tally/models/game_arguments.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

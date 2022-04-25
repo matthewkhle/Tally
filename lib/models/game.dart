@@ -12,7 +12,7 @@ class Game {
   }
 
   Future createGame() async {
-    await DatabaseService(gameId: gameId).updateData(0, 1);
+    await DatabaseService(gameId: gameId).updateScores(0, 1);
     return gameId;
   }
 }

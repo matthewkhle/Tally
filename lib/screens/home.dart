@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tally/models/gameArguments.dart';
+import 'package:tally/models/game_arguments.dart';
 
 import 'package:tally/services/database.dart';
 // ignore_for_file: prefer_const_constructors

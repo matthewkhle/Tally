@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tally/models/team.dart';
 import 'package:tally/services/database.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import 'package:tally/screens/scoreboard/game_info.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Scoreboard extends StatefulWidget {
@@ -24,20 +26,16 @@ class _ScoreboardState extends State<Scoreboard> {
     final DatabaseService gameData = DatabaseService(gameId: "1234");
     gameData.updateScores(3, 10);
 
-    return Scaffold(
-        body: StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('Game ').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) {
-          return Center(
-            child: CupertinoActivityIndicator(),
-          );
-        }
-        return SafeArea(
+    return StreamProvider<List<Team>?>.value(
+      value: DatabaseService(gameId: widget.gameId).game,
+      initialData: null,
+      child: Scaffold(
+        body: SafeArea(
           child: Center(
             child: Stack(children: [
               Column(
                 children: [
+                  GameInfo(),
                   Text(widget.gameId),
                   Expanded(
                     child: GestureDetector(
@@ -148,8 +146,8 @@ class _ScoreboardState extends State<Scoreboard> {
               ),
             ]),
           ),
-        );
-      },
-    ));
+        ),
+      ),
+    );
   }
 }

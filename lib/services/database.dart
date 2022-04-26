@@ -13,38 +13,16 @@ class DatabaseService {
   }
 
   createGame(Team team1, Team team2) {
-    initializeTeam(team1);
-    initializeTeam(team2);
+    update(team1);
+    update(team2);
   }
 
-  initializeTeam(Team team) {
-    initializeId(team.id);
-    updateScore(team.id, team.score);
-    updateColor(team.id, team.color);
-    updateName(team.id, team.name);
-  }
-
-  initializeId(String teamId) async {
-    await gameCollection.doc(teamId).set({
-      'id': teamId,
-    });
-  }
-
-  updateScore(String teamId, int score) async {
-    await gameCollection.doc(teamId).set({
-      'score': score,
-    });
-  }
-
-  updateColor(String teamId, String color) async {
-    await gameCollection.doc(teamId).set({
-      'color': color,
-    });
-  }
-
-  updateName(String teamId, String name) async {
-    await gameCollection.doc(teamId).set({
-      'name': name,
+  update(Team team) async {
+    await gameCollection.doc(team.id).set({
+      'id': team.id,
+      'score': team.score,
+      'color': team.color,
+      'name': team.name,
     });
   }
 

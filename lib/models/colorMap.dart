@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ColorMap {
-  Color? toMaterialColor(String colorString) {
-    switch(colorString) {
+  static Color? toMaterialColor(String colorString) {
+    switch (colorString) {
       case "green":
         return Colors.green;
       case "amber":
@@ -10,6 +10,5 @@ class ColorMap {
       default:
         return Colors.brown[50];
     }
-
   }
 }

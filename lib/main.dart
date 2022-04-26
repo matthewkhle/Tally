@@ -1,12 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'package:tally/models/game_arguments.dart';
 // ignore_for_file: prefer_const_constructors
 import 'package:tally/screens/home.dart';
 import 'package:tally/screens/loading.dart';
-import 'package:tally/screens/scoreboard/scoreboard.dart';
-import 'package:tally/screens/scoreboard/scoreboard_settings.dart';
-import 'package:tally/models/game_arguments.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:tally/screens/scoreboard/main_area/scoreboard.dart';
+import 'package:tally/screens/scoreboard/settings/scoreboard_settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

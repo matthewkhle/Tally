@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tally/models/game_arguments.dart';
 
-import 'package:tally/services/database.dart';
+import '../services/game_id.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Home extends StatefulWidget {
@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
               InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, "/scoreboard",
-                        arguments: GameArguments('1234'));
+                        arguments: GameArguments(generateShortId()));
                   },
                   child: Container(
                     height: 200,

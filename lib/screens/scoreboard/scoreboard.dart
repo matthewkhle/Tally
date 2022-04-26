@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tally/models/team.dart';
-import 'package:tally/services/database.dart';
 import 'package:provider/provider.dart';
-import 'package:tally/screens/scoreboard/game_info.dart';
+import 'package:tally/models/team.dart';
+import 'package:tally/screens/scoreboard/tiles.dart';
+import 'package:tally/services/database.dart';
+
 // ignore_for_file: prefer_const_constructors
 
 class Scoreboard extends StatefulWidget {
@@ -33,78 +33,7 @@ class _ScoreboardState extends State<Scoreboard> {
         body: SafeArea(
           child: Center(
             child: Stack(children: [
-              Column(
-                children: [
-                  GameInfo(),
-                  Text(widget.gameId),
-                  Expanded(
-                    child: GestureDetector(
-                      onPanUpdate: (details) {
-                        swipeDirection = details.delta.dy < 0 ? 'up' : 'down';
-                      },
-                      onPanEnd: (details) {
-                        if (swipeDirection == null) {
-                          return;
-                        }
-                        if (swipeDirection == 'up') {
-                          setState(() {});
-                        }
-                        if (swipeDirection == 'down') {
-                          setState(() {});
-                        }
-                      },
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {});
-                        },
-                        child: Ink(
-                            child: Center(
-                              child: Text(
-                                '$team1Score',
-                                style: TextStyle(
-                                  fontSize: 50,
-                                ),
-                              ),
-                            ),
-                            color: Colors.green),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onPanUpdate: (details) {
-                        swipeDirection = details.delta.dy < 0 ? 'up' : 'down';
-                      },
-                      onPanEnd: (details) {
-                        if (swipeDirection == null) {
-                          return;
-                        }
-                        if (swipeDirection == 'up') {
-                          setState(() {});
-                        }
-                        if (swipeDirection == 'down') {
-                          setState(() {});
-                        }
-                      },
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {});
-                        },
-                        child: Ink(
-                            child: Center(
-                              child: Text(
-                                '$team2Score',
-                                style: TextStyle(
-                                  fontSize: 50,
-                                ),
-                              ),
-                            ),
-                            color: Colors.amber),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              Tiles(),
               Align(
                 alignment: Alignment.centerLeft,
                 child: MaterialButton(

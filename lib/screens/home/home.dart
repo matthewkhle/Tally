@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
                     children: const [
                       CreateGameButton(),
                       VerticalDivider(
-                        thickness: 2,
+                        thickness: 3,
                         width: 20,
                         color: Colors.white,
                       ),

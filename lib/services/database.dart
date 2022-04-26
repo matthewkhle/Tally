@@ -9,7 +9,10 @@ class DatabaseService {
   late CollectionReference gameCollection;
 
   DatabaseService({required this.gameId}) {
-    gameCollection = FirebaseFirestore.instance.collection('Game: ' + gameId);
+    gameCollection = FirebaseFirestore.instance
+        .collection("Games")
+        .doc("Games")
+        .collection("Game: " + gameId.toString());
   }
 
   createGame(Team team1, Team team2) {

@@ -49,7 +49,9 @@ class _ScoreTileState extends State<ScoreTile> {
       },
       child: InkWell(
         onTap: () {
-          setState(() {});
+          setState(() {
+            modifyScore(widget.team, 1);
+          });
         },
         child: Ink(
             child: Center(

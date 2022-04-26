@@ -8,6 +8,6 @@ String generateLongId() {
 
 String generateShortId() {
   var rng = Random();
-  var code = rng.nextInt(9000) + 1000;
+  var code = rng.nextInt(900000) + 100000;
   return code.toString();
 }

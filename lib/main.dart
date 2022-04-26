@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tally/models/game_arguments.dart';
-// ignore_for_file: prefer_const_constructors
-import 'package:tally/screens/home.dart';
+import 'package:tally/screens/home/home.dart';
 import 'package:tally/screens/loading.dart';
 import 'package:tally/screens/scoreboard/main_area/scoreboard.dart';
 import 'package:tally/screens/scoreboard/settings/scoreboard_settings.dart';
@@ -13,9 +12,9 @@ void main() async {
   runApp(MaterialApp(
     initialRoute: '/home',
     routes: {
-      '/': (context) => Loading(),
-      '/home': (context) => Home(),
-      '/scoreboard_settings': (context) => ScoreboardSettings(),
+      '/': (context) => const Loading(),
+      '/home': (context) => const Home(),
+      '/scoreboard_settings': (context) => const ScoreboardSettings(),
     },
     onGenerateRoute: (settings) {
       if (settings.name == "/scoreboard") {

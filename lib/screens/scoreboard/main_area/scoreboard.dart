@@ -26,8 +26,8 @@ class _ScoreboardState extends State<Scoreboard> {
   @override
   Widget build(BuildContext context) {
     final DatabaseService gameData = DatabaseService(gameId: widget.gameId);
-    Team team1 = Team(id: "Team 1", score: 0, color: "green", name: "Team 1");
-    Team team2 = Team(id: "Team 2", score: 0, color: "amber", name: "Team 1");
+    Team team1 = Team(id: "Team 1", score: 0, color: "green", name: "Broncos");
+    Team team2 = Team(id: "Team 2", score: 0, color: "amber", name: "Pomona");
     gameData.createGame(team1, team2);
 
     return StreamProvider<List<Team>?>.value(

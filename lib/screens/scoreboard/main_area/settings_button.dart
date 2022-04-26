@@ -16,14 +16,14 @@ class _SettingsButtonState extends State<SettingsButton> {
         onPressed: () {
           Navigator.pushNamed(context, '/scoreboard_settings');
         },
-        color: Colors.blue,
+        color: Colors.lightBlueAccent,
         textColor: Colors.white,
-        child: Icon(
+        child: const Icon(
           Icons.settings,
           size: 30,
         ),
-        padding: EdgeInsets.all(10),
-        shape: CircleBorder(),
+        padding: const EdgeInsets.all(10),
+        shape: const CircleBorder(),
       ),
     );
   }

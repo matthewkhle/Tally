@@ -16,14 +16,14 @@ class _HomeButtonState extends State<HomeButton> {
         onPressed: () {
           Navigator.pushNamed(context, '/home');
         },
-        color: Colors.blue,
+        color: Colors.lightBlueAccent,
         textColor: Colors.white,
-        child: Icon(
+        child: const Icon(
           Icons.home,
           size: 30,
         ),
-        padding: EdgeInsets.all(10),
-        shape: CircleBorder(),
+        padding: const EdgeInsets.all(10),
+        shape: const CircleBorder(),
       ),
     );
   }

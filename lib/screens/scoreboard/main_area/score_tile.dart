@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:tally/models/colorMap.dart';
 import 'package:tally/models/team.dart';
@@ -55,11 +57,25 @@ class _ScoreTileState extends State<ScoreTile> {
         },
         child: Ink(
             child: Center(
-              child: Text(
-                widget.team.score.toString(),
-                style: TextStyle(
-                  fontSize: 50,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    widget.team.name.toString(),
+                    style: const TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    widget.team.score.toString(),
+                    style: const TextStyle(
+                      fontSize: 175,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
             color: ColorMap.toMaterialColor(widget.team.color)),

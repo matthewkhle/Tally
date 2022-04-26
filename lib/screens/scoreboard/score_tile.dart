@@ -16,37 +16,35 @@ class _ScoreTileState extends State<ScoreTile> {
   @override
   Widget build(BuildContext context) {
     // return Container(child: Text(widget.team.score.toString()));
-    return Expanded(
-      child: GestureDetector(
-        onPanUpdate: (details) {
-          swipeDirection = details.delta.dy < 0 ? 'up' : 'down';
+    return GestureDetector(
+      onPanUpdate: (details) {
+        swipeDirection = details.delta.dy < 0 ? 'up' : 'down';
+      },
+      onPanEnd: (details) {
+        if (swipeDirection == null) {
+          return;
+        }
+        if (swipeDirection == 'up') {
+          setState(() {});
+        }
+        if (swipeDirection == 'down') {
+          setState(() {});
+        }
+      },
+      child: InkWell(
+        onTap: () {
+          setState(() {});
         },
-        onPanEnd: (details) {
-          if (swipeDirection == null) {
-            return;
-          }
-          if (swipeDirection == 'up') {
-            setState(() {});
-          }
-          if (swipeDirection == 'down') {
-            setState(() {});
-          }
-        },
-        child: InkWell(
-          onTap: () {
-            setState(() {});
-          },
-          child: Ink(
-              child: Center(
-                child: Text(
-                  '$widget.team.score',
-                  style: TextStyle(
-                    fontSize: 50,
-                  ),
+        child: Ink(
+            child: Center(
+              child: Text(
+                widget.team.score.toString(),
+                style: TextStyle(
+                  fontSize: 50,
                 ),
               ),
-              color: Colors.green),
-        ),
+            ),
+            color: Colors.green),
       ),
     );
   }

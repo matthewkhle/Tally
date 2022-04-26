@@ -16,11 +16,12 @@ class _TilesState extends State<Tiles> {
     final teams = Provider.of<List<Team>>(context);
     return Column(
       children: [
-        ListView.builder(
-            itemCount: teams.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ScoreTile(team: teams[index]);
-            }),
+        Expanded(
+          child: ScoreTile(team: teams[0]),
+        ),
+        Expanded(
+          child: ScoreTile(team: teams[1]),
+        ),
       ],
     );
   }

@@ -1,7 +1,10 @@
-class Team {
-  final int score;
-  // final String color;
-  // final String name;
+import 'package:flutter/material.dart';
 
-  Team({ required this.score });
+class Team {
+  String id;
+  int score;
+  String color;
+  String name;
+
+  Team({ required this.id, required this.score, required this.color, required this.name });
 }

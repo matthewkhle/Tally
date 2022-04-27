@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'reset_all_button.dart';
 // ignore_for_file: prefer_const_constructors
 
 class ScoreboardSettings extends StatefulWidget {
@@ -14,26 +16,23 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
     return Scaffold(
       // backgroundColor: Colors.blue,
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("Scoreboard Settings"),
+        backgroundColor: Colors.lightBlueAccent,
+        title: Text("Settings"),
+        actions: const [
+          ResetAllButton(),
+        ],
         centerTitle: true,
       ),
+      backgroundColor: Colors.grey[900],
       body: SafeArea(
         child: Center(
           child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: TextButton.icon(
-                    onPressed: () {
-                      setState(() {
-                      });
-                    },
-                    label: Text('Reset'),
-                    icon: Icon(Icons.restart_alt_rounded)
-                  ),
+            children: const [
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
                 ),
               ),
             ],

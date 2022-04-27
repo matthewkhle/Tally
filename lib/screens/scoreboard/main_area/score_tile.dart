@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:tally/models/colorMap.dart';
+import 'package:tally/models/color_map.dart';
 import 'package:tally/models/team.dart';
 import 'package:tally/services/database.dart';
 
@@ -78,7 +78,7 @@ class _ScoreTileState extends State<ScoreTile> {
                 ],
               ),
             ),
-            color: ColorMap.toMaterialColor(widget.team.color)),
+            color: getMaterialColor(widget.team.color)),
       ),
     );
   }

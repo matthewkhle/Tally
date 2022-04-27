@@ -36,10 +36,13 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       CreateGameButton(),
-                      VerticalDivider(
-                        thickness: 3,
-                        width: 20,
-                        color: Colors.white,
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: VerticalDivider(
+                          thickness: 3,
+                          width: 20,
+                          color: Colors.white,
+                        ),
                       ),
                       JoinGame(),
                     ]),

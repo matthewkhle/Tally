@@ -25,18 +25,16 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
       ),
       backgroundColor: Colors.grey[900],
       body: SafeArea(
-        child: Center(
-          child: Stack(
-            children: const [
-              TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
+        child: Stack(
+          children: const [
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

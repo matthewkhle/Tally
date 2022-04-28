@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:tally/models/game_arguments.dart';
 
 class JoinGame extends StatefulWidget {
   const JoinGame({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class JoinGame extends StatefulWidget {
 }
 
 class _JoinGameState extends State<JoinGame> {
+  final _codeController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,6 +21,7 @@ class _JoinGameState extends State<JoinGame> {
         SizedBox(
           width: 150.0,
           child: TextField(
+            controller: _codeController,
             textAlign: TextAlign.center,
             decoration: InputDecoration(
               labelText: 'Enter Code',
@@ -50,7 +54,10 @@ class _JoinGameState extends State<JoinGame> {
               backgroundColor:
                   MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, "/scoreboard",
+                  arguments: GameArguments(_codeController.text));
+            },
             child: const Text(
               'Join',
               style: TextStyle(

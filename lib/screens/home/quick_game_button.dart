@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tally/models/game_arguments.dart';
+import 'package:tally/services/database.dart';
 import 'package:tally/services/game_id.dart';
 
 class QuickGameButton extends StatefulWidget {
@@ -14,8 +15,10 @@ class _QuickGameButtonState extends State<QuickGameButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        String gameId = generateLongId();
+        DatabaseService(gameId: gameId).createGame();
         Navigator.pushNamed(context, "/scoreboard",
-            arguments: GameArguments(generateLongId()));
+            arguments: GameArguments(gameId));
       },
       child: Container(
         height: 200,

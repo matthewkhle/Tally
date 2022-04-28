@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tally/models/game_arguments.dart';
+import 'package:tally/services/database.dart';
+import 'package:tally/services/game_id.dart';
 
 class CreateGameButton extends StatefulWidget {
   const CreateGameButton({Key? key}) : super(key: key);
@@ -13,7 +16,12 @@ class _CreateGameButtonState extends State<CreateGameButton> {
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: InkWell(
-            onTap: () {},
+            onTap: () {
+              String gameId = generateShortId();
+              DatabaseService(gameId: gameId).createGame();
+              Navigator.pushNamed(context, "/scoreboard",
+                  arguments: GameArguments(gameId));
+            },
             child: Container(
               height: 150,
               width: 150,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tally/models/team.dart';
+import 'package:tally/screens/scoreboard/main_area/game_code.dart';
 import 'package:tally/screens/scoreboard/main_area/home_button.dart';
 import 'package:tally/screens/scoreboard/main_area/settings_button.dart';
 import 'package:tally/screens/scoreboard/main_area/tiles.dart';
@@ -26,10 +27,25 @@ class _ScoreboardState extends State<Scoreboard> {
   @override
   Widget build(BuildContext context) {
     final DatabaseService gameData = DatabaseService(gameId: widget.gameId);
-    Team team1 = Team(id: "Team 1", score: 0, color: "green", name: "Home");
-    Team team2 = Team(id: "Team 2", score: 0, color: "amber", name: "Away");
-    gameData.createGame(team1, team2);
 
+    if (widget.gameId.length == 6) {
+      return StreamProvider<List<Team>?>.value(
+        value: DatabaseService(gameId: widget.gameId).game,
+        initialData: null,
+        child: Scaffold(
+          body: SafeArea(
+            child: Center(
+              child: Stack(children: [
+                Tiles(gameData: gameData),
+                HomeButton(),
+                GameCode(gameCode: widget.gameId),
+                SettingsButton(),
+              ]),
+            ),
+          ),
+        ),
+      );
+    }
     return StreamProvider<List<Team>?>.value(
       value: DatabaseService(gameId: widget.gameId).game,
       initialData: null,

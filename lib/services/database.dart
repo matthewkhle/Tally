@@ -15,7 +15,10 @@ class DatabaseService {
         .collection("Game: " + gameId.toString());
   }
 
-  createGame(Team team1, Team team2) {
+  createGame() {
+    Team team1 = Team(id: "Team 1", score: 0, color: "green", name: "Home");
+    Team team2 = Team(id: "Team 2", score: 0, color: "amber", name: "Away");
+
     update(team1);
     update(team2);
   }

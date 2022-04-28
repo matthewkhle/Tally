@@ -27,25 +27,6 @@ class _ScoreboardState extends State<Scoreboard> {
   @override
   Widget build(BuildContext context) {
     final DatabaseService gameData = DatabaseService(gameId: widget.gameId);
-
-    if (widget.gameId.length == 6) {
-      return StreamProvider<List<Team>?>.value(
-        value: DatabaseService(gameId: widget.gameId).game,
-        initialData: null,
-        child: Scaffold(
-          body: SafeArea(
-            child: Center(
-              child: Stack(children: [
-                Tiles(gameData: gameData),
-                HomeButton(),
-                GameCode(gameCode: widget.gameId),
-                SettingsButton(),
-              ]),
-            ),
-          ),
-        ),
-      );
-    }
     return StreamProvider<List<Team>?>.value(
       value: DatabaseService(gameId: widget.gameId).game,
       initialData: null,
@@ -55,6 +36,7 @@ class _ScoreboardState extends State<Scoreboard> {
             child: Stack(children: [
               Tiles(gameData: gameData),
               HomeButton(),
+              if (widget.gameId.length == 6) GameCode(gameCode: widget.gameId),
               SettingsButton(),
             ]),
           ),

@@ -23,6 +23,9 @@ class _JoinGameState extends State<JoinGame> {
           child: TextField(
             controller: _codeController,
             textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
             decoration: InputDecoration(
               labelText: 'Enter Code',
               labelStyle: const TextStyle(

@@ -1,7 +1,10 @@
 import "package:flutter/material.dart";
+import 'package:tally/models/game_arguments.dart';
 
 class SettingsButton extends StatefulWidget {
-  const SettingsButton({Key? key}) : super(key: key);
+  final String gameId;
+
+  const SettingsButton({Key? key, required this.gameId}) : super(key: key);
 
   @override
   State<SettingsButton> createState() => _SettingsButtonState();
@@ -14,7 +17,11 @@ class _SettingsButtonState extends State<SettingsButton> {
       alignment: Alignment.centerRight,
       child: MaterialButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/scoreboard_settings');
+          Navigator.pushNamed(
+            context,
+            "/scoreboard_settings",
+            arguments: GameArguments(widget.gameId),
+          );
         },
         color: Colors.lightBlueAccent,
         textColor: Colors.white,

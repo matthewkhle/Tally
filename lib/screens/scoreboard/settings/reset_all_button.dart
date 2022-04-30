@@ -14,15 +14,11 @@ class _ResetAllButtonState extends State<ResetAllButton> {
       alignment: Alignment.topRight,
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: TextButton.icon(
-            onPressed: () {
-              setState(() {});
-            },
-            style: TextButton.styleFrom(
-              primary: Colors.black,
-            ),
-            label: const Text('Reset'),
-            icon: const Icon(Icons.restart_alt_rounded)),
+        child: IconButton(
+          color: Colors.red,
+          icon: Icon(Icons.restart_alt_outlined),
+          onPressed: () {},
+        ),
       ),
     );
   }

@@ -37,7 +37,9 @@ class _ScoreboardState extends State<Scoreboard> {
               Tiles(gameData: gameData),
               HomeButton(),
               if (widget.gameId.length == 6) GameCode(gameCode: widget.gameId),
-              SettingsButton(),
+              SettingsButton(
+                gameId: widget.gameId,
+              ),
             ]),
           ),
         ),

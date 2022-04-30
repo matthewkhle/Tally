@@ -14,7 +14,6 @@ void main() async {
     routes: {
       '/': (context) => const Loading(),
       '/home': (context) => const Home(),
-      '/scoreboard_settings': (context) => const ScoreboardSettings(),
     },
     onGenerateRoute: (settings) {
       if (settings.name == "/scoreboard") {
@@ -22,6 +21,13 @@ void main() async {
         return MaterialPageRoute(
           builder: (context) {
             return Scoreboard(gameId: args.gameId);
+          },
+        );
+      } else if (settings.name == "/scoreboard_settings") {
+        final args = settings.arguments as GameArguments;
+        return MaterialPageRoute(
+          builder: (context) {
+            return ScoreboardSettings(gameId: args.gameId);
           },
         );
       }

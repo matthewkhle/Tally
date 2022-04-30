@@ -44,8 +44,20 @@ class DatabaseService {
     }).toList();
   }
 
-  // get games stream
+  // get game stream
   Stream<List<Team>> get game {
     return gameCollection.snapshots().map(_teamListFromSnapshot);
+  }
+
+  Future<List<Team>> get teams async {
+    var documents = await gameCollection.get();
+    return documents.docs.map((doc) {
+      return Team(
+        id: doc.get('id'),
+        score: doc.get('score') ?? 0,
+        color: doc.get('color') ?? Colors.red,
+        name: doc.get('name') ?? "",
+      );
+    }).toList();
   }
 }

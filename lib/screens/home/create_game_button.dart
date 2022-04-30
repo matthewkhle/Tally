@@ -19,8 +19,11 @@ class _CreateGameButtonState extends State<CreateGameButton> {
             onTap: () {
               String gameId = generateShortId();
               DatabaseService(gameId: gameId).createGame();
-              Navigator.pushNamed(context, "/scoreboard",
-                  arguments: GameArguments(gameId));
+              Navigator.pushNamed(
+                context,
+                "/scoreboard",
+                arguments: GameArguments(gameId),
+              );
             },
             child: Container(
               height: 150,

@@ -45,8 +45,8 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
             appBar: AppBar(
               backgroundColor: Colors.lightBlueAccent[200],
               title: Text("Settings"),
-              actions: const [
-                ResetAllButton(),
+              actions: [
+                ResetAllButton(gameId: widget.gameId),
               ],
               centerTitle: true,
             ),

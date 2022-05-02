@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tally/services/database.dart';
 
 class ResetAllButton extends StatefulWidget {
-  const ResetAllButton({Key? key}) : super(key: key);
+  final String gameId;
+  const ResetAllButton({Key? key, required this.gameId}) : super(key: key);
 
   @override
   State<ResetAllButton> createState() => _ResetAllButtonState();
@@ -17,7 +19,10 @@ class _ResetAllButtonState extends State<ResetAllButton> {
         child: IconButton(
           color: Colors.red,
           icon: Icon(Icons.restart_alt_outlined),
-          onPressed: () {},
+          onPressed: () {
+            DatabaseService(gameId: widget.gameId).createGame();
+            Navigator.pop(context);
+          },
         ),
       ),
     );

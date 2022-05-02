@@ -16,12 +16,14 @@ class TeamSettings extends StatefulWidget {
 class _TeamSettingsState extends State<TeamSettings> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _scoreController = TextEditingController();
-  CustomColorObject
+  late CustomColorObject _selectedColor =
+      getCustomColorObject(widget.team.color);
 
   @override
   Widget build(BuildContext context) {
     _nameController.text = widget.team.name;
     _scoreController.text = "${widget.team.score}";
+    // _selectedColor = getCustomColorObject(widget.team.color);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
@@ -122,7 +124,7 @@ class _TeamSettingsState extends State<TeamSettings> {
               canvasColor: Colors.grey[900],
             ),
             child: DropdownButton<CustomColorObject>(
-              value: getCustomColorObject(widget.team.color),
+              value: _selectedColor,
               items: customColorObjects.map((CustomColorObject value) {
                 return DropdownMenuItem<CustomColorObject>(
                     value: value,
@@ -143,23 +145,17 @@ class _TeamSettingsState extends State<TeamSettings> {
                     ));
               }).toList(),
               onChanged: (newColor) {
-                widget.onChange(
-                  widget.team.id,
-                  widget.team.score,
-                  widget.team.name,
-                  newColor?.string,
-                );
+                setState(() {
+                  _selectedColor = newColor!;
+                  widget.onChange(
+                    widget.team.id,
+                    widget.team.score,
+                    widget.team.name,
+                    newColor.string,
+                  );
+                });
               },
             ),
-          ),
-          DropdownButton<String>(
-            items: <String>['A', 'B', 'C', 'D'].map((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-            onChanged: (_) {},
           ),
         ],
       ),

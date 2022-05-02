@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tally/models/color_map.dart';
 import 'package:tally/models/team.dart';
 
 class TeamSettings extends StatefulWidget {
@@ -15,6 +16,7 @@ class TeamSettings extends StatefulWidget {
 class _TeamSettingsState extends State<TeamSettings> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _scoreController = TextEditingController();
+  CustomColorObject
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +42,11 @@ class _TeamSettingsState extends State<TeamSettings> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: _nameController,
-              onChanged: (text) {
+              onChanged: (newName) {
                 widget.onChange(
                   widget.team.id,
                   widget.team.score,
-                  text,
+                  newName,
                   widget.team.color,
                 );
               },
@@ -79,10 +81,10 @@ class _TeamSettingsState extends State<TeamSettings> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: _scoreController,
-              onChanged: (text) {
+              onChanged: (newScore) {
                 widget.onChange(
                   widget.team.id,
-                  int.parse(text),
+                  int.parse(newScore),
                   widget.team.name,
                   widget.team.color,
                 );
@@ -114,6 +116,50 @@ class _TeamSettingsState extends State<TeamSettings> {
                 // fillColor: Colors.white,
               ),
             ),
+          ),
+          Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: Colors.grey[900],
+            ),
+            child: DropdownButton<CustomColorObject>(
+              value: getCustomColorObject(widget.team.color),
+              items: customColorObjects.map((CustomColorObject value) {
+                return DropdownMenuItem<CustomColorObject>(
+                    value: value,
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 25.0,
+                          width: 25.0,
+                          color: value.materialColor,
+                        ),
+                        Text(
+                          " ${value.string}",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ));
+              }).toList(),
+              onChanged: (newColor) {
+                widget.onChange(
+                  widget.team.id,
+                  widget.team.score,
+                  widget.team.name,
+                  newColor?.string,
+                );
+              },
+            ),
+          ),
+          DropdownButton<String>(
+            items: <String>['A', 'B', 'C', 'D'].map((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            onChanged: (_) {},
           ),
         ],
       ),

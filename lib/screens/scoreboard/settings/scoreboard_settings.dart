@@ -83,6 +83,12 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
                             updateTeam(id, score, name, color);
                           },
                         ),
+                        Divider(
+                          color: Colors.white,
+                          thickness: 3,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
                         TeamSettings(
                             team: teams[1],
                             onChange: (String id, int score, String name,

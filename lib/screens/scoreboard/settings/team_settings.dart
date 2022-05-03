@@ -79,83 +79,92 @@ class _TeamSettingsState extends State<TeamSettings> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _scoreController,
-              onChanged: (newScore) {
-                widget.onChange(
-                  widget.team.id,
-                  int.parse(newScore),
-                  widget.team.name,
-                  widget.team.color,
-                );
-              },
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Score',
-                labelStyle: const TextStyle(
-                  color: Colors.grey,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    width: 3,
-                    color: Colors.white,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    width: 3,
-                    color: Colors.white,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                // fillColor: Colors.white,
-              ),
-            ),
-          ),
-          Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.grey[900],
-            ),
-            child: DropdownButton<CustomColorObject>(
-              value: _selectedColor,
-              items: customColorObjects.map((CustomColorObject value) {
-                return DropdownMenuItem<CustomColorObject>(
-                    value: value,
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 25.0,
-                          width: 25.0,
-                          color: value.materialColor,
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: _scoreController,
+                    onChanged: (newScore) {
+                      widget.onChange(
+                        widget.team.id,
+                        int.parse(newScore),
+                        widget.team.name,
+                        widget.team.color,
+                      );
+                    },
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Score',
+                      labelStyle: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 3,
+                          color: Colors.white,
                         ),
-                        Text(
-                          " ${value.string}",
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          width: 3,
+                          color: Colors.white,
                         ),
-                      ],
-                    ));
-              }).toList(),
-              onChanged: (newColor) {
-                setState(() {
-                  _selectedColor = newColor!;
-                  widget.onChange(
-                    widget.team.id,
-                    widget.team.score,
-                    widget.team.name,
-                    newColor.string,
-                  );
-                });
-              },
-            ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      // fillColor: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    canvasColor: Colors.grey[900],
+                  ),
+                  child: DropdownButton<CustomColorObject>(
+                    value: _selectedColor,
+                    items: customColorObjects.map((CustomColorObject value) {
+                      return DropdownMenuItem<CustomColorObject>(
+                          value: value,
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 25.0,
+                                width: 25.0,
+                                color: value.materialColor,
+                              ),
+                              Text(
+                                " ${value.string}",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ));
+                    }).toList(),
+                    onChanged: (newColor) {
+                      setState(() {
+                        _selectedColor = newColor!;
+                        widget.onChange(
+                          widget.team.id,
+                          widget.team.score,
+                          widget.team.name,
+                          newColor.string,
+                        );
+                      });
+                    },
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),

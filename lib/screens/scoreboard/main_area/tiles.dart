@@ -16,7 +16,11 @@ class Tiles extends StatefulWidget {
 class _TilesState extends State<Tiles> {
   @override
   Widget build(BuildContext context) {
-    final teams = Provider.of<List<Team>>(context);
+    final teams = Provider.of<List<Team>?>(context);
+    if (teams == null) {
+      return Container();
+    }
+
     return Column(
       children: [
         Expanded(

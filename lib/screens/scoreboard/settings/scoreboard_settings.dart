@@ -20,16 +20,28 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
   late Team team1;
   late Team team2;
 
-  void updateTeam(String id, int score, String name, String color) {
-    Team newTeam = Team(id: id, score: score, name: name, color: color);
-
+  void updateName(String id, String name) {
     if (id == "Team 1") {
-      team1 = newTeam;
-    } else {
-      team2 = newTeam;
+      team1 = Team(id: id, score: team1.score, name: name, color: team1.color);
+    } else if (id == "Team 2") {
+      team2 = Team(id: id, score: team2.score, name: name, color: team2.color);
     }
-    print(team1.name);
-    print(team2.name);
+  }
+
+  void updateScore(String id, int score) {
+    if (id == "Team 1") {
+      team1 = Team(id: id, score: score, name: team1.name, color: team1.color);
+    } else if (id == "Team 2") {
+      team2 = Team(id: id, score: score, name: team2.name, color: team2.color);
+    }
+  }
+
+  void updateColor(String id, String color) {
+    if (id == "Team 1") {
+      team1 = Team(id: id, score: team1.score, name: team1.name, color: color);
+    } else if (id == "Team 2") {
+      team2 = Team(id: id, score: team2.score, name: team2.name, color: color);
+    }
   }
 
   @override
@@ -78,9 +90,14 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
                       children: [
                         TeamSettings(
                           team: teams[0],
-                          onChange: (String id, int score, String name,
-                              String color) {
-                            updateTeam(id, score, name, color);
+                          updateName: (String id, String name) {
+                            updateName(id, name);
+                          },
+                          updateScore: (String id, int score) {
+                            updateScore(id, score);
+                          },
+                          updateColor: (String id, String color) {
+                            updateColor(id, color);
                           },
                         ),
                         Divider(
@@ -90,11 +107,17 @@ class _ScoreboardSettingsState extends State<ScoreboardSettings> {
                           endIndent: 10,
                         ),
                         TeamSettings(
-                            team: teams[1],
-                            onChange: (String id, int score, String name,
-                                String color) {
-                              updateTeam(id, score, name, color);
-                            }),
+                          team: teams[1],
+                          updateName: (String id, String name) {
+                            updateName(id, name);
+                          },
+                          updateScore: (String id, int score) {
+                            updateScore(id, score);
+                          },
+                          updateColor: (String id, String color) {
+                            updateColor(id, color);
+                          },
+                        ),
                       ],
                     ),
                   )
